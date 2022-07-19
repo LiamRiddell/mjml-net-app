@@ -99,7 +99,8 @@ namespace Mjml.Net.Editor.Pages
 
             if (TryCompileMjmlTemplateAsync(modelContent, out string htmlContent))
             {
-                webviewPreview.NavigateToString(htmlContent);
+                // webviewPreview.NavigateToString(htmlContent);
+                await webviewPreview.ExecuteScriptAsync($"document.body.innerHTML = `{htmlContent.Replace("`", "``")}`;");
                 // await webviewHtml.CoreWebView2.ExecuteScriptAsync($"window.monacoEditorInstance.getModel().setValue('{htmlContent}')");
                 htmlPreviewBox.Text = htmlContent;
             }
