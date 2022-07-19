@@ -1,5 +1,6 @@
 ﻿using Microsoft.Web.WebView2.Core;
 using Mjml.Net.App.Helpers;
+using Mjml.Net.App.HostObjects;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -49,11 +50,14 @@ namespace Mjml.Net.App
 
         private async void webviewMonacoEditor_CoreWebView2Initialized(Microsoft.UI.Xaml.Controls.WebView2 sender, Microsoft.UI.Xaml.Controls.CoreWebView2InitializedEventArgs args)
         {
+
+            webviewMonacoEditor.CoreWebView2.AddHostObjectToScript("textEditorBridge", new TextEditorBridgeHostObject());
+           
             webviewMonacoEditor.CoreWebView2.OpenDevToolsWindow();
-
+            webviewMonacoEditor.CoreWebView2.Settings.HostObjectDispatchAdapter = 
             var htmlTemplateEditorPage = await ResourceHelpers.ReadResourceAsync("Mjml.Net.App.Resources.TemplateEditorPage.html");
-
             webviewMonacoEditor.NavigateToString(htmlTemplateEditorPage);
+
         }
 
         private async void webviewPreview_CoreWebView2Initialized(Microsoft.UI.Xaml.Controls.WebView2 sender, Microsoft.UI.Xaml.Controls.CoreWebView2InitializedEventArgs args)

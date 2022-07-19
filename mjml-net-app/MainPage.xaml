@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Microsoft.UI.Xaml.Controls"
     xmlns:UWPToolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:Wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf" 
     mc:Ignorable="d"
     Background="#1E1E1E" Loaded="MjmlEditorPage_Loaded">
 
@@ -18,13 +19,13 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0" Background="#1E1E1E">
-            <controls:WebView2 x:Name="webviewMonacoEditor" CoreWebView2Initialized="webviewMonacoEditor_CoreWebView2Initialized" Background="#1E1E1E"/>
+            <controls:WebView2 x:Name="webviewMonacoEditor" Source="http://127.0.0.1" CoreWebView2Initialized="webviewMonacoEditor_CoreWebView2Initialized" Background="#1E1E1E"/>
         </Grid>
 
         <UWPToolkit:GridSplitter Grid.Column="1" />
 
         <Grid Grid.Column="2" Background="#1E1E1E">
-            <controls:WebView2 x:Name="webviewPreview" CoreWebView2Initialized="webviewPreview_CoreWebView2Initialized" Background="#1E1E1E" />
+            <controls:WebView2 x:Name="webviewPreview" Source="http://127.0.0.1" CoreWebView2Initialized="webviewPreview_CoreWebView2Initialized" Background="#1E1E1E" />
         </Grid>
         
     </Grid>
