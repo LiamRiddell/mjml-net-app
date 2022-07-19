@@ -30,7 +30,5 @@
                 <Wpf:WebView2 x:Name="webviewHtml" CoreWebView2InitializationCompleted="webviewHtml_CoreWebView2InitializationCompleted" />
             </TabItem>
         </TabControl>
-    
-
     </Grid>
 </Page>
