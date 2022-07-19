@@ -16,9 +16,13 @@ namespace Mjml.Net.App.Wpf.HostObjects
         //}
         //private Dictionary<int, string> m_dictionary = new Dictionary<int, string>();
 
-        public void OnDidChangeContent(string modelContent)
+        public delegate void OnDidChangeContentDelegate(string modelContent);
+        public static event OnDidChangeContentDelegate? OnDidChangeContent;
+
+        public void OnDidChangeContentInternal(string modelContent)
         {
-            Trace.WriteLine($"[TextEditorBridge] OnEditorChangeDetected: {modelContent}");
+            // Trace.WriteLine($"[TextEditorBridge] OnEditorChangeDetected: {modelContent}");
+            OnDidChangeContent?.Invoke(modelContent);
         }
     }
 }

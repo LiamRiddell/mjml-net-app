@@ -28,17 +28,24 @@ namespace Mjml.Net.App.Wpf
             webviewMonacoEditor.CoreWebView2.OpenDevToolsWindow();
             #endif
 
+            // Register our bridge object to handle communication between WebView2 and CLR
             webviewMonacoEditor.CoreWebView2.AddHostObjectToScript("bridge", new TextEditorBridgeHostObject());
 
+            // Register to events we're interested in
+            TextEditorBridgeHostObject.OnDidChangeContent += TextEditorBridgeHostObject_OnDidChangeContent;
+            
+            // Load the editor page
             var htmlTemplateEditorPage = await ResourceHelpers.ReadResourceAsync("Mjml.Net.App.Wpf.Resources.TemplateEditorPage.html");
             webviewMonacoEditor.NavigateToString(htmlTemplateEditorPage);
         }
-
         private async void webviewPreview_CoreWebView2InitializationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
         {
 
         }
 
-        
+        private void TextEditorBridgeHostObject_OnDidChangeContent(string modelContent)
+        {
+            Trace.WriteLine($"[TextEditor_OnDidChangeContent] OnEditorChangeDetected: {modelContent}");
+        }      
     }
 }

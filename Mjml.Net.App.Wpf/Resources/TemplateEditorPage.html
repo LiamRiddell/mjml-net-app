@@ -53,7 +53,7 @@
             });
 
             window.monacoEditorInstance.getModel().onDidChangeContent((event) => {
-                chrome.webview.hostObjects.bridge.OnDidChangeContent(window.monacoEditorInstance.getValue())
+                chrome.webview.hostObjects.bridge.OnDidChangeContentInternal(window.monacoEditorInstance.getValue())
             });
         });
     </script>
