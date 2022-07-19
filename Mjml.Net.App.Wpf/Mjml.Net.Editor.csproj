@@ -8,10 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\HtmlPreviewPage.html" />
     <None Remove="Resources\TemplateEditorPage.html" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\HtmlPreviewPage.html" />
     <EmbeddedResource Include="Resources\TemplateEditorPage.html" />
   </ItemGroup>
 

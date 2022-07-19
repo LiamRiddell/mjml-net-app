@@ -49,7 +49,9 @@ namespace Mjml.Net.Editor.Pages
         {
             await webviewMonacoEditor.EnsureCoreWebView2Async();
             await webviewPreview.EnsureCoreWebView2Async();
+           // await webviewHtml.EnsureCoreWebView2Async();
         }
+        
         private async void webviewMonacoEditor_CoreWebView2InitializationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
         {
 #if DEBUG
@@ -66,6 +68,17 @@ namespace Mjml.Net.Editor.Pages
             var htmlTemplateEditorPage = await ResourceHelpers.ReadResourceAsync("Mjml.Net.Editor.Resources.TemplateEditorPage.html");
             webviewMonacoEditor.NavigateToString(htmlTemplateEditorPage);
         }
+
+        private async void webviewHtml_CoreWebView2InitializationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
+        {
+#if DEBUG
+            //webviewHtml.CoreWebView2.OpenDevToolsWindow();
+#endif
+            // Load the editor page
+            var htmlTemplateEditorPage = await ResourceHelpers.ReadResourceAsync("Mjml.Net.Editor.Resources.HtmlPreviewPage.html");
+           // webviewHtml.NavigateToString(htmlTemplateEditorPage);
+        }
+
         private async void webviewPreview_CoreWebView2InitializationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
         {
             // DefaultMjmlTemplateString
@@ -79,6 +92,7 @@ namespace Mjml.Net.Editor.Pages
                 webviewPreview.NavigateToString(htmlContent);
             }
         }
+        
         private async void TextEditorBridgeHostObject_OnDidChangeContent(string modelContent)
         {
             Trace.WriteLine($"[TextEditor_OnDidChangeContent] OnEditorChangeDetected: {modelContent}");
@@ -86,8 +100,11 @@ namespace Mjml.Net.Editor.Pages
             if (TryCompileMjmlTemplateAsync(modelContent, out string htmlContent))
             {
                 webviewPreview.NavigateToString(htmlContent);
+                // await webviewHtml.CoreWebView2.ExecuteScriptAsync($"window.monacoEditorInstance.getModel().setValue('{htmlContent}')");
+                htmlPreviewBox.Text = htmlContent;
             }
         }
+        
         private bool TryCompileMjmlTemplateAsync(string mjmlTemplate, out string htmlContent)
         {
             htmlContent = string.Empty;
@@ -106,11 +123,6 @@ namespace Mjml.Net.Editor.Pages
 
             htmlContent = result.Html;
             return true;
-        }
-
-        private void webviewHtml_CoreWebView2InitializationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
-        {
-
         }
     }
 }
