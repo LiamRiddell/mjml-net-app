@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{5152703B-33D4-414E-8547-35759D597BBA}</ProjectGuid>
+    <ProjectGuid>{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mjml.Net.App</RootNamespace>

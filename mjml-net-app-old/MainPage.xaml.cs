@@ -54,7 +54,6 @@ namespace Mjml.Net.App
             webviewMonacoEditor.CoreWebView2.AddHostObjectToScript("textEditorBridge", new TextEditorBridgeHostObject());
            
             webviewMonacoEditor.CoreWebView2.OpenDevToolsWindow();
-            webviewMonacoEditor.CoreWebView2.Settings.HostObjectDispatchAdapter = 
             var htmlTemplateEditorPage = await ResourceHelpers.ReadResourceAsync("Mjml.Net.App.Resources.TemplateEditorPage.html");
             webviewMonacoEditor.NavigateToString(htmlTemplateEditorPage);
 
