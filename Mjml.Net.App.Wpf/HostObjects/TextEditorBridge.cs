@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace Mjml.Net.App.Wpf.HostObjects
+namespace Mjml.Net.Editor.HostObjects
 {
     [ClassInterface(ClassInterfaceType.AutoDual)]
     [ComVisible(true)]

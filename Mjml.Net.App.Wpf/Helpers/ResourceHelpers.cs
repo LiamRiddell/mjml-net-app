@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mjml.Net.App.Wpf.Helpers
+namespace Mjml.Net.Editor.Helpers
 {
     public static class ResourceHelpers
     {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Mjml.Net.App.Wpf
+namespace Mjml.Net.Editor
 {
     /// <summary>
     /// Interaction logic for App.xaml
