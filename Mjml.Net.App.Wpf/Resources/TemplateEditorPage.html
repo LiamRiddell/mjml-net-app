@@ -51,6 +51,10 @@
                 theme: 'vs-dark',
                 automaticLayout: true
             });
+
+            window.monacoEditorInstance.getModel().onDidChangeContent((event) => {
+                chrome.webview.hostObjects.bridge.OnDidChangeContent(window.monacoEditorInstance.getValue())
+            });
         });
     </script>
 </body>

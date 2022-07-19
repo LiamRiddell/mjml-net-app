@@ -16,7 +16,7 @@ namespace Mjml.Net.App.Wpf.HostObjects
         //}
         //private Dictionary<int, string> m_dictionary = new Dictionary<int, string>();
 
-        public void OnEditorChangeDetected(string modelContent)
+        public void OnDidChangeContent(string modelContent)
         {
             Trace.WriteLine($"[TextEditorBridge] OnEditorChangeDetected: {modelContent}");
         }
