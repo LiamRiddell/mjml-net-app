@@ -28,6 +28,7 @@ namespace Mjml.Net.Editor.Pages
         public MjmlRenderer MjmlRenderer { get; set; }
         public string DefaultMjmlTemplateString { get; set; }
         public bool ShowHtml { get; set; } = false;
+        public bool MinifyHtml { get; set; } = true;
 
         public MainEditorPage()
         {
@@ -126,7 +127,11 @@ namespace Mjml.Net.Editor.Pages
             {
                 mjmlTemplate = MjmlRenderer.FixXML(mjmlTemplate);
 
-                var result = MjmlRenderer.Render(mjmlTemplate);
+                var result = MjmlRenderer.Render(mjmlTemplate, new MjmlOptions()
+                {
+                    Beautify = !MinifyHtml,
+                    Minify = MinifyHtml
+                });
 
                 if (result.Errors.Any())
                 {
@@ -222,6 +227,16 @@ namespace Mjml.Net.Editor.Pages
                 webviewPreview.Visibility = Visibility.Visible;
                 htmlPreviewBox.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void MenuItemMinifyHtml_Checked(object sender, RoutedEventArgs e)
+        {
+            MinifyHtml = true;
+        }
+
+        private void MenuItemMinifyHtml_Unchecked(object sender, RoutedEventArgs e)
+        {
+            MinifyHtml = false;
         }
     }
 }

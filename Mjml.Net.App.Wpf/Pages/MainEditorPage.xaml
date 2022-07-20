@@ -40,6 +40,7 @@
                     <ui:SymbolIcon Filled="True" Symbol="Settings24"/>
                 </MenuItem.Icon>
                 <MenuItem Name="MenuItemShowHtml" Header="Show Html" IsCheckable="True" IsChecked="{Binding ElementName=EditorPage, Path=ShowHtml}" Checked="MenuItemShowHtml_Checked" Unchecked="MenuItemShowHtml_Unchecked"/>
+                <MenuItem Name="MenuItemMinifyHtml" Header="Minify Html" IsCheckable="True" IsChecked="{Binding ElementName=EditorPage, Path=MinifyHtml}" Checked="MenuItemMinifyHtml_Checked" Unchecked="MenuItemMinifyHtml_Unchecked"/>
             </MenuItem>
         </Menu>
 
