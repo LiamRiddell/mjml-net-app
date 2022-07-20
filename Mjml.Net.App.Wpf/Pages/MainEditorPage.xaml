@@ -11,19 +11,75 @@
       Title="MainEditor" Initialized="Page_Initialized">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" Background="#1E1E1E">
+
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0"  Foreground="WhiteSmoke">
+            <MenuItem Header="File">
+                <ui:MenuItem
+          Header="New"
+          InputGestureText="Ctrl+N"
+          SymbolIcon="Accessibility24" />
+                <MenuItem Header="Open" InputGestureText="Ctrl+O" />
+                <MenuItem Header="Disabled" IsEnabled="False" />
+                <ui:MenuItem
+          Header="Save"
+          InputGestureText="Ctrl+S"
+          SymbolIcon="Save24" />
+                <Separator />
+                <MenuItem Header="Exit" InputGestureText="Ctrl+Q" />
+            </MenuItem>
+            <MenuItem Header="With icon">
+                <MenuItem.Icon>
+                    <ui:SymbolIcon Filled="True" Symbol="StoreMicrosoft24" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <ui:MenuItem Header="Save as" SymbolIcon="Save24">
+                <ui:MenuItem Header="Word Document" SymbolIcon="AlertUrgent24" />
+                <MenuItem Header="PDF" InputGestureText="Ctrl+Alt+P" />
+                <MenuItem Header="Text File" />
+                <Separator />
+                <MenuItem Header="Print" InputGestureText="Ctrl+P" />
+            </ui:MenuItem>
+            <MenuItem Header="With submenu">
+                <MenuItem
+          Header="Show status bar"
+          IsCheckable="True"
+          IsChecked="True" />
+                <MenuItem Header="Word wrap" IsCheckable="True" />
+                <ui:MenuItem
+          Header="Checkable custom"
+          IsCheckable="True"
+          SymbolIcon="AlignTop24" />
+                <MenuItem Header="NormalItem" />
+                <ui:MenuItem Header="SubMenu" SymbolIcon="Balloon24">
+                    <ui:MenuItem Header="SubMenu 2" SymbolIcon="Diversity24">
+                        <ui:MenuItem Header="SubItem 2.1" SymbolIcon="Guardian24" />
+                    </ui:MenuItem>
+                    <MenuItem Header="SubItem 1" />
+                </ui:MenuItem>
+            </MenuItem>
+            <MenuItem Header="Disabled" IsEnabled="False" />
+            <Separator />
+            <MenuItem Header="Close" />
+        </Menu>
+
+        <Grid Grid.Column="0" Grid.Row="1" Background="#1E1E1E">
             <Wpf:WebView2 x:Name="webviewMonacoEditor" CoreWebView2InitializationCompleted="webviewMonacoEditor_CoreWebView2InitializationCompleted" />
         </Grid>
 
-        <GridSplitter Grid.Column="1" Width="4" VerticalAlignment="Stretch" Background="#373C40" BorderThickness="0,0,0,1" BorderBrush="DarkGray" ResizeDirection="Columns" ResizeBehavior="PreviousAndNext"/>
+        <GridSplitter Grid.Column="1" Grid.Row="1" Width="4" VerticalAlignment="Stretch" Background="#373C40" BorderThickness="0,0,0,1" BorderBrush="DarkGray" ResizeDirection="Columns" ResizeBehavior="PreviousAndNext"/>
 
-        <TabControl Grid.Column="2" Background="#1E1E1E">
+        <TabControl Grid.Column="2" Grid.Row="1" Background="#1E1E1E">
             <TabItem Header="Preview">
                 <Wpf:WebView2 x:Name="webviewPreview" CoreWebView2InitializationCompleted="webviewPreview_CoreWebView2InitializationCompleted" />
             </TabItem>

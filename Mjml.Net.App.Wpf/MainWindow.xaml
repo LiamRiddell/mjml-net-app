@@ -22,12 +22,11 @@
         Grid.Row="1"
         Margin="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <!--  Main Navigation (Hidden) -->
-            <ui:NavigationStore Visibility="Hidden"
+            <!--<ui:NavigationStore Visibility="Hidden"
             x:Name="RootNavigation"
             Grid.Column="0"
             Margin="6,0,6,0"
@@ -41,19 +40,19 @@
                     PageTag="browser" />
 
                 </ui:NavigationStore.Items>
-            </ui:NavigationStore>
+            </ui:NavigationStore>-->
 
             <!--  Page Display  -->
             <Border
             Grid.Column="1"
             Background="{DynamicResource ControlFillColorDefaultBrush}"
-            CornerRadius="8,0,0,0">
+            CornerRadius="0,0,0,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Frame x:Name="RootFrame" Grid.Row="1" />
+                    <Frame x:Name="RootFrame" Grid.Row="1" Source="/Pages/MainEditorPage.xaml" />
                 </Grid>
             </Border>
         </Grid>
