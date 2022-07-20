@@ -27,6 +27,7 @@ namespace Mjml.Net.Editor.Pages
     {
         public MjmlRenderer MjmlRenderer { get; set; }
         public string DefaultMjmlTemplateString { get; set; }
+        public bool ShowHtml { get; set; } = false;
 
         public MainEditorPage()
         {
@@ -92,6 +93,7 @@ namespace Mjml.Net.Editor.Pages
             if (TryCompileMjmlTemplateAsync(DefaultMjmlTemplateString, out string htmlContent))
             {
                 webviewPreview.NavigateToString(htmlContent);
+                htmlPreviewBox.Text = htmlContent;
             }
         }
         
@@ -201,6 +203,24 @@ namespace Mjml.Net.Editor.Pages
                         await File.WriteAllTextAsync(dlg.FileName, modelContentEscaped);
                     }
                 }
+            }
+        }
+
+        private async void MenuItemShowHtml_Checked(object sender, RoutedEventArgs e)
+        {
+            if (webviewPreview != null && htmlPreviewBox != null)
+            {
+                webviewPreview.Visibility = Visibility.Collapsed;
+                htmlPreviewBox.Visibility = Visibility.Visible;
+            }
+        }
+
+        private async void MenuItemShowHtml_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (webviewPreview != null && htmlPreviewBox != null)
+            {
+                webviewPreview.Visibility = Visibility.Visible;
+                htmlPreviewBox.Visibility = Visibility.Collapsed;
             }
         }
     }
