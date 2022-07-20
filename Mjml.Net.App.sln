@@ -8,9 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mjml-net-app-old-uwp", "mjml-net-app-old\mjml-net-app-old-uwp.csproj", "{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mjml.Net.Editor", "Mjml.Net.App.Wpf\Mjml.Net.Editor.csproj", "{49C2F590-6B48-42B4-AE02-8A18C1E61C0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mjml.Net.Editor", "Mjml.Net.App.Wpf\Mjml.Net.Editor.csproj", "{49C2F590-6B48-42B4-AE02-8A18C1E61C0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,36 +24,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Debug|Any CPU.Build.0 = Debug|x64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Debug|Any CPU.Deploy.0 = Debug|x64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Debug|ARM.ActiveCfg = Debug|ARM
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Debug|ARM.Build.0 = Debug|ARM
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Debug|ARM.Deploy.0 = Debug|ARM
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Debug|ARM64.ActiveCfg = Debug|ARM64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Debug|ARM64.Build.0 = Debug|ARM64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Debug|ARM64.Deploy.0 = Debug|ARM64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Debug|x64.ActiveCfg = Debug|x64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Debug|x64.Build.0 = Debug|x64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Debug|x64.Deploy.0 = Debug|x64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Debug|x86.ActiveCfg = Debug|x86
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Debug|x86.Build.0 = Debug|x86
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Debug|x86.Deploy.0 = Debug|x86
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Release|Any CPU.ActiveCfg = Release|x64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Release|Any CPU.Build.0 = Release|x64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Release|Any CPU.Deploy.0 = Release|x64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Release|ARM.ActiveCfg = Release|ARM
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Release|ARM.Build.0 = Release|ARM
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Release|ARM.Deploy.0 = Release|ARM
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Release|ARM64.ActiveCfg = Release|ARM64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Release|ARM64.Build.0 = Release|ARM64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Release|ARM64.Deploy.0 = Release|ARM64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Release|x64.ActiveCfg = Release|x64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Release|x64.Build.0 = Release|x64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Release|x64.Deploy.0 = Release|x64
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Release|x86.ActiveCfg = Release|x86
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Release|x86.Build.0 = Release|x86
-		{1ABC13BD-72FE-4441-81C4-E3E52323B4E5}.Release|x86.Deploy.0 = Release|x86
 		{49C2F590-6B48-42B4-AE02-8A18C1E61C0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{49C2F590-6B48-42B4-AE02-8A18C1E61C0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49C2F590-6B48-42B4-AE02-8A18C1E61C0B}.Debug|ARM.ActiveCfg = Debug|Any CPU
