@@ -25,32 +25,16 @@
 
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0"  Foreground="WhiteSmoke">
             <MenuItem Header="File">
-                <ui:MenuItem
-          Header="New"
-          InputGestureText="Ctrl+N"
-          SymbolIcon="Accessibility24" />
-                <MenuItem Header="Open" InputGestureText="Ctrl+O" />
-                <MenuItem Header="Disabled" IsEnabled="False" />
-                <ui:MenuItem
-          Header="Save"
-          InputGestureText="Ctrl+S"
-          SymbolIcon="Save24" />
-                <Separator />
-                <MenuItem Header="Exit" InputGestureText="Ctrl+Q" />
-            </MenuItem>
-            <MenuItem Header="With icon">
                 <MenuItem.Icon>
-                    <ui:SymbolIcon Filled="True" Symbol="StoreMicrosoft24" />
+                    <ui:SymbolIcon Filled="True" Symbol="Folder24"/>
                 </MenuItem.Icon>
+
+                <ui:MenuItem Name="MenuItemOpenTemplate" Header="Open" SymbolIcon="Open24" Click="MenuItemOpenTemplate_Click" />
+                <ui:MenuItem Name="MenuItemNewTemplate" Header="New" SymbolIcon="Accessibility24" Click="MenuItemNewTemplate_Click" />
+                <ui:MenuItem Name="MenuItemSaveTemplate" Header="Save" SymbolIcon="Save24" Click="MenuItemSaveTemplate_Click"/>
             </MenuItem>
-            <ui:MenuItem Header="Save as" SymbolIcon="Save24">
-                <ui:MenuItem Header="Word Document" SymbolIcon="AlertUrgent24" />
-                <MenuItem Header="PDF" InputGestureText="Ctrl+Alt+P" />
-                <MenuItem Header="Text File" />
-                <Separator />
-                <MenuItem Header="Print" InputGestureText="Ctrl+P" />
-            </ui:MenuItem>
-            <MenuItem Header="With submenu">
+   
+            <MenuItem Header="With submenu" Visibility="Hidden">
                 <MenuItem
           Header="Show status bar"
           IsCheckable="True"
@@ -68,9 +52,6 @@
                     <MenuItem Header="SubItem 1" />
                 </ui:MenuItem>
             </MenuItem>
-            <MenuItem Header="Disabled" IsEnabled="False" />
-            <Separator />
-            <MenuItem Header="Close" />
         </Menu>
 
         <Grid Grid.Column="0" Grid.Row="1" Background="#1E1E1E">

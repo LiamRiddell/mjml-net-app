@@ -4,8 +4,10 @@ using Mjml.Net.Editor.HostObjects;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -75,8 +77,8 @@ namespace Mjml.Net.Editor.Pages
             //webviewHtml.CoreWebView2.OpenDevToolsWindow();
 #endif
             // Load the editor page
-            var htmlTemplateEditorPage = await ResourceHelpers.ReadResourceAsync("Mjml.Net.Editor.Resources.HtmlPreviewPage.html");
-           // webviewHtml.NavigateToString(htmlTemplateEditorPage);
+            // var htmlTemplateEditorPage = await ResourceHelpers.ReadResourceAsync("Mjml.Net.Editor.Resources.HtmlPreviewPage.html");
+            // webviewHtml.NavigateToString(htmlTemplateEditorPage);
         }
 
         private async void webviewPreview_CoreWebView2InitializationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
@@ -104,6 +106,11 @@ namespace Mjml.Net.Editor.Pages
                 // await webviewHtml.CoreWebView2.ExecuteScriptAsync($"window.monacoEditorInstance.getModel().setValue('{htmlContent}')");
                 htmlPreviewBox.Text = htmlContent;
             }
+            else
+            {
+                await webviewPreview.ExecuteScriptAsync($"document.body.innerHTML = ``;");
+                htmlPreviewBox.Text = string.Empty;
+            }
         }
         
         private bool TryCompileMjmlTemplateAsync(string mjmlTemplate, out string htmlContent)
@@ -113,17 +120,88 @@ namespace Mjml.Net.Editor.Pages
             if (MjmlRenderer == null)
                 return false;
 
-            mjmlTemplate = MjmlRenderer.FixXML(mjmlTemplate);
+            try
+            {
+                mjmlTemplate = MjmlRenderer.FixXML(mjmlTemplate);
 
-            var result = MjmlRenderer.Render(mjmlTemplate);
+                var result = MjmlRenderer.Render(mjmlTemplate);
 
-            if (result.Errors.Any())
+                if (result.Errors.Any())
+                {
+                    return false;
+                }
+
+                htmlContent = result.Html;
+                return true;
+            }
+            catch (Exception)
             {
                 return false;
             }
+        }
 
-            htmlContent = result.Html;
-            return true;
+        private async void MenuItemOpenTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            if (webviewMonacoEditor.IsInitialized)
+            {
+                Microsoft.Win32.OpenFileDialog dlg = new()
+                {
+                    FileName = "MjmlTemplate",
+                    DefaultExt = ".mjml",
+                    Filter = "Mjml Templates (.mjml)|*.mjml"
+                };
+
+                var result = dlg.ShowDialog();
+
+                if (result == true)
+                {
+                    if (!string.IsNullOrEmpty(dlg.FileName))
+                    {
+                        var mjmlTemplateText = await File.ReadAllTextAsync(dlg.FileName);
+
+                        if (!string.IsNullOrEmpty(mjmlTemplateText))
+                        { 
+                            await webviewMonacoEditor.ExecuteScriptAsync($"monacoEditorInstance.getModel().setValue(`{mjmlTemplateText}`);");
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private async void MenuItemNewTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            if (webviewMonacoEditor.IsInitialized)
+            {
+                await webviewMonacoEditor.ExecuteScriptAsync($"monacoEditorInstance.getModel().setValue(``);");
+            }
+        }
+
+        private async void MenuItemSaveTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            // Get the source code from monaco editor
+            var modelContentEscaped = await webviewMonacoEditor.ExecuteScriptAsync(@"(function() { return monacoEditorInstance.getModel().getValue() })();");
+            modelContentEscaped = Regex.Unescape(modelContentEscaped).TrimStart('"').TrimEnd('"');
+
+            if (webviewMonacoEditor.IsInitialized && !string.IsNullOrEmpty(modelContentEscaped))
+            {
+                Microsoft.Win32.SaveFileDialog dlg = new()
+                {
+                    FileName = "MjmlTemplate",
+                    DefaultExt = ".mjml",
+                    Filter = "Mjml Templates (.mjml)|*.mjml"
+                };
+
+                var result = dlg.ShowDialog();
+
+                if (result == true)
+                {
+                    if (!string.IsNullOrEmpty(dlg.FileName))
+                    {
+                        await File.WriteAllTextAsync(dlg.FileName, modelContentEscaped);
+                    }
+                }
+            }
         }
     }
 }
