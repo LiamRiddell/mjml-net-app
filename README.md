@@ -4,7 +4,7 @@ A slim version of the official [MJML App](https://mjmlio.github.io/mjml-app/) wh
 ![screenshot](Assets/screenshot.png)
 
 <p align="center">
-<b>IMPORTANT:</b> IF YOU ARE USING MJML FOR NODE PLEASE USE THIS [VERSION](https://mjmlio.github.io/mjml-app/).
+<b>IMPORTANT:</b> IF YOU ARE USING MJML FOR NODE PLEASE USE THIS <a href="https://mjmlio.github.io/mjml-app/">VERSION</a>.
 </p>
 
 ## Features
